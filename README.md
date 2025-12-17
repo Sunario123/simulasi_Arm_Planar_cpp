@@ -52,13 +52,14 @@ Jika Deterimnannya adalah 0 maka tidak bisa diinvers. Jika Determinannya bukan 0
   <img src="images/Invers_Jacobian.png" alt="Jacobian Formula" style="max-width:100%; height:10%;">
 </p>
 
-# Compile & Run 
+# Compile & Run CPP 
+Note: Tidak bisa dibarengi dengan run python karena beda program
 ```bash
 g++ exc_1.cpp -o exc_1.exe
 ./exc_1.exe
 ```
 
-## Penjelasan Output
+## Penjelasan Output CPP
 Berikut merupakan contoh output pada program menghitung kecepatan linear
 ```bash
 1. hitung kecepatan linear
@@ -77,4 +78,45 @@ ydot = 0.866025 m/s
 
 Pada program tersebut, artinya adalah panjang lengan 1 adalah 1 meter, dan panjang lengan 2 adalah 2 meter. kemudian sudut theta 1 adalah 30 derajat, dan sudut theta 2 adalah 60  derajat. Kecepatan sudut pada theta 1 adalah 1 rad/s dan pada theta 2 adalah 1 rad/s. Yang dihasilkan dari program tersebut adalah kecepatan linear dari end-effector sebesar 4.5 m/s ke kiri dan 0.866 m/s ke atas. 
 
+
+# Run Python untuk visualisasi 
+```bash
+python3 sim2_link.py
+```
+
+## Dokumentasi untuk setting sendiri
+Berikut merupakan variabel yang bisa dirubah:
+```py
+# =============================
+# PARAMETER ROBOT
+# =============================
+l1 = 0.5
+l2 = 1.5
+
+theta1 = np.deg2rad(60)
+theta2 = np.deg2rad(30)
+
+thetaDot1 = 0.0
+thetaDot2 = 0.0
+
+# =============================
+# TARGET & KONTROL
+# =============================
+xd, yd = 0.5, 1.5
+K = 2.0
+dt = 0.05
+eps = 1e-3 #PAKEM JANGAN DIRUBAH
+```
+**Penjelasan:**
+- *l1* & *l2* untuk panjang lengan atau link 1 dan 2
+- *theta1* dan *theta2* untuk sudut pada lengan 1 dan lengan 2
+- *xd* dan *yd* untuk titik yang dituju formatnya (xd,yd)
+- *K* untuk kosntanta pengali saja
+- dt adalah berapa lamanya program berjalan untuk per step
+- eps adalah nilai yang mendekati 0 **(Jangan Dirubah)**
+
+## Contoh output simulasi
+<p align="center">
+  <img src="images/simulasiArm.png" alt="Jacobian Formula" style="max-width:50%; height:10%;">
+</p>
 
